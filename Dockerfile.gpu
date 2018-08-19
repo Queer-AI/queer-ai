@@ -12,11 +12,12 @@ RUN  \
   tqdm \
   django \
   asgi_redis \
+  asgiref==2.2.0\
   channels && \
   python3 -m nltk.downloader punkt
 
 ## Tensorflow
-ARG TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.0.0-cp34-cp34m-linux_x86_64.whl
+ARG TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.0.0-cp35-cp35m-linux_x86_64.whl
 RUN \
   pip3 install -U $TF_BINARY_URL
 
@@ -30,8 +31,11 @@ ENV CHATBOT_REDIS_URL="redis"
 EXPOSE 8000
 
 WORKDIR /root/DeepQA/chatbot_website
-RUN python3 manage.py makemigrations
-RUN python3 manage.py migrate
+
+## In nvidia-docker2 build runs without GPU access, so we
+## have to run these later.
+#RUN python3 manage.py makemigrations
+#RUN python3 manage.py migrate
 
 # Launch the server
 CMD python3 manage.py runserver 0.0.0.0:8000
