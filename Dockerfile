@@ -35,6 +35,11 @@ WORKDIR /root/DeepQA
 
 RUN ./manage.sh initialize
 
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+ARG AWS_BUCKET_NAME
+ARG AWS_DEFAULT_REGION
+
 RUN ./tag.sh pull
 
 # Launch the server
