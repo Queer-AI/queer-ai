@@ -1,4 +1,5 @@
 ## Dockerfile to build DeepQ&A container image 
+## This image is for running the webserver, for training see Dockerfile.gpu
 FROM python:3.5.2
 
 ## Dependencies
@@ -8,6 +9,7 @@ RUN \
 
 RUN  \
   pip3 install -U nltk \
+  awscli \
   tqdm \
   django==1.10.1 \
   asgi_redis \
@@ -32,6 +34,8 @@ EXPOSE 8000
 WORKDIR /root/DeepQA
 
 RUN ./manage.sh initialize
+
+RUN ./tag.sh pull
 
 # Launch the server
 CMD ./manage.sh runserver 0.0.0.0:8000
