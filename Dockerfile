@@ -1,5 +1,4 @@
-## Dockerfile to build DeepQ&A container image
-
+## Dockerfile to build DeepQ&A container image 
 FROM python:3.5.2
 
 ## Dependencies
@@ -10,9 +9,9 @@ RUN \
 RUN  \
   pip3 install -U nltk \
   tqdm \
-  django \
+  django==1.10.1 \
   asgi_redis \
-  channels && \
+  channels==1.1.6 && \
   python3 -m nltk.downloader punkt
 
 ## Tensorflow
@@ -30,9 +29,9 @@ ENV CHATBOT_SECRET_KEY="e#0y6^6mg37y9^+t^p_$xwnogcdh=27)f6_=v^$bh9p0ihd-%v"
 ENV CHATBOT_REDIS_URL="redis"
 EXPOSE 8000
 
-WORKDIR /root/DeepQA/chatbot_website
-RUN python3 manage.py makemigrations
-RUN python3 manage.py migrate
+WORKDIR /root/DeepQA
+
+RUN ./manage.sh initialize
 
 # Launch the server
-CMD python3 manage.py runserver 0.0.0.0:8000
+CMD ./manage.sh runserver 0.0.0.0:8000
