@@ -43,7 +43,7 @@ elif [ "$1" = "pull" ]; then
     tag=$MODEL_TAG
   fi
   echo "Loading tagged model ${tag}."
-  TAG_DIR="${MODEL_DIR}-${tag}"
+  TAG_DIR="${MODEL_DIR}"
   if [ -d $TAG_DIR ]; then
     echo "${TAG_DIR} already exists! Aborting."
   else

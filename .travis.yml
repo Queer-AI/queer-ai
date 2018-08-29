@@ -1,0 +1,18 @@
+sudo: required
+
+language: python
+
+env:
+  global:
+    - DOCKER_TLS_VERIFY=1
+    - DOCKER_CERT_PATH=.docker-machine
+
+services:
+  - docker
+
+before_install:
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+  - aws s3 sync .docker-machine s3://queer-ai/DeepQA/docker-machine --recursive --include "*"
+  - docker build -t deepqa:latest
+  - docker-compose up -d
