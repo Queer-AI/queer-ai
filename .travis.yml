@@ -10,6 +10,6 @@ env:
 before_install:
   - pip install awscli
   - export PATH=$PATH:$HOME/.local/bin
-  - aws s3 sync .docker-machine s3://queer-ai/DeepQA/docker-machine --recursive --include "*"
+  - aws s3 sync s3://queer-ai/DeepQA/docker-machine .docker-machine --include "*"
   - docker build -t deepqa:latest
   - docker-compose up -d
