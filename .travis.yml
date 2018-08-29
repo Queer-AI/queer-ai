@@ -10,6 +10,6 @@ env:
 before_install:
   - pip install awscli
   - export PATH=$PATH:$HOME/.local/bin
-  - aws s3 sync "s3://${AWS_BUCKET_NAME}/docker-machine" .docker-machine --include "*"
+  - aws s3 sync "s3://${AWS_BUCKET_NAME}/DeepQA/docker-machine" .docker-machine --include "*"
   - docker build -t deepqa:latest .
   - docker-compose up -d
