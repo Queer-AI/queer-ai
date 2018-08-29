@@ -7,6 +7,8 @@ env:
     - DOCKER_TLS_VERIFY=1
     - DOCKER_CERT_PATH=.docker-machine
 
+script: echo "Deploy complete."
+
 before_install:
   - pip install awscli
   - export PATH=$PATH:$HOME/.local/bin
