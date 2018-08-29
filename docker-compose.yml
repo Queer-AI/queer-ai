@@ -3,7 +3,7 @@ services:
   web:
     image: deepqa:latest
     ports:
-      - "8000:80"
+      - "80:8000"
     environment:
       - PYTHONUNBUFFERED=0
     depends_on:

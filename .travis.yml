@@ -1,7 +1,5 @@
 sudo: required
 
-language: python
-
 env:
   global:
     - DOCKER_TLS_VERIFY=1
