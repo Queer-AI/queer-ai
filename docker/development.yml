@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
+    ports:
+      - "8000:8000"
     volumes:
-      - ./logs:/root/DeepQA/chatbot_website/logs
-      - ./save:/root/DeepQA/save
-      - ./data:/root/DeepQA/data
+      - ${PWD}/chatbot_website:/root/DeepQA/chatbot_website

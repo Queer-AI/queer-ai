@@ -1,4 +1,4 @@
-## Dockerfile to build DeepQ&A container image 
+## Dockerfile to build DeepQ&A container image
 ## This image is for running the webserver, for training see Dockerfile.gpu
 FROM python:3.5.2
 
@@ -32,8 +32,6 @@ ENV CHATBOT_REDIS_URL="redis"
 EXPOSE 8000
 
 WORKDIR /root/DeepQA
-
-RUN ./manage.sh initialize
 
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY

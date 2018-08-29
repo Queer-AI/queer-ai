@@ -4,12 +4,8 @@ set -e
 
 cd chatbot_website
 
-if [ $1 = "initialize" ]; then
-	python3 manage.py makemigrations
-	python3 manage.py migrate
-else
-	./manage.py "$@"
-fi
+python3 manage.py makemigrations
+python3 manage.py migrate
+./manage.py "$@"
 
 cd ../
-
