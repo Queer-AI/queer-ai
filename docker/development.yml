@@ -1,0 +1,7 @@
+version: '2'
+services:
+  web:
+    volumes:
+      - ./logs:/root/DeepQA/chatbot_website/logs
+      - ./save:/root/DeepQA/save
+      - ./data:/root/DeepQA/data

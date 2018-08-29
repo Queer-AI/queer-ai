@@ -4,10 +4,6 @@ services:
     image: deepqa:latest
     environment:
       - PYTHONUNBUFFERED=0
-    volumes:
-      - ./logs:/root/DeepQA/chatbot_website/logs
-      - ./save:/root/DeepQA/save
-      - ./data:/root/DeepQA/data
     depends_on:
       - redis
   redis:

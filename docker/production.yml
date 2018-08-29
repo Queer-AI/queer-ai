@@ -3,4 +3,3 @@ services:
   web:
     ports:
       - "80:8000"
-    volumes: []
