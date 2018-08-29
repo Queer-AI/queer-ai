@@ -23,20 +23,4 @@ RUN \
 
 COPY ./ /root/DeepQA
 
-## Run Config
-
-# You should generate your own key if you want deploy it on a server
-ENV CHATBOT_SECRET_KEY="e#0y6^6mg37y9^+t^p_$xwnogcdh=27)f6_=v^$bh9p0ihd-%v"
-ENV CHATBOT_REDIS_URL="redis"
-EXPOSE 8000
-
 WORKDIR /root/DeepQA
-
-## In nvidia-docker2 build runs without GPU access, so we
-## have to run these later.
-#RUN python3 manage.py makemigrations
-#RUN python3 manage.py migrate
-
-
-# Launch the server
-CMD python3 manage.py runserver 0.0.0.0:8000

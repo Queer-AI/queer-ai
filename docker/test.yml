@@ -1,0 +1,13 @@
+version: '2'
+services:
+  test:
+    image: deepqa:latest
+    working_dir: /root/DeepQA
+    stdin_open: true
+    tty: true
+    command: [python3, main.py, '--test', interactive]
+    environment:
+      - PYTHONUNBUFFERED=0
+    volumes:
+      - ${PWD}/save:/root/DeepQA/save
+      - ${PWD}/data:/root/DeepQA/data

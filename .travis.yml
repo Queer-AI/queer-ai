@@ -16,4 +16,4 @@ before_install:
       --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
       --build-arg AWS_BUCKET_NAME=$AWS_BUCKET_NAME
       .
-  - docker-compose up -d
+  - docker-compose -f docker-compose.yml -f docker/production.yml up -d

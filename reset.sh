@@ -2,5 +2,5 @@
 
 set -e
 
-sudo rm -rf save/*
+sudo rm -rf save/model/*
 sudo rm data/samples/*
