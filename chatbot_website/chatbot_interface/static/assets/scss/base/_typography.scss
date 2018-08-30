@@ -16,8 +16,6 @@
 		font-size: 14pt;
 		font-weight: _font(weight);
 		line-height: 2;
-		letter-spacing: _size(letter-spacing);
-		text-transform: uppercase;
 
 		@include breakpoint(xlarge) {
 			font-size: 11pt;
@@ -65,6 +63,7 @@
 		color: _palette(fg-bold);
 		line-height: 1.5;
 		margin: 0 0 (_size(element-margin) * 0.5) 0;
+		text-transform: uppercase;
 
 		a {
 			color: inherit;

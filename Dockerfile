@@ -12,6 +12,7 @@ RUN  \
   awscli \
   tqdm \
   django==1.10.1 \
+  django-static-precompiler[libsass]==1.5 \
   asgi_redis \
   channels==1.1.6 && \
   python3 -m nltk.downloader punkt

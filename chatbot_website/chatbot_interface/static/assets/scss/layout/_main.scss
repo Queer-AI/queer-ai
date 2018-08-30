@@ -37,6 +37,7 @@
 			img {
 				display: block;
 				margin: 0 auto;
+				max-width: 100%;
 				border-radius: 100%;
 				box-shadow: 0 0 0 1.5em _palette(bg);
 			}
@@ -48,9 +49,9 @@
 				top: 50%;
 				left: -3em;
 				width: calc(100% + 6em);
-				height: _size(border-width);
+				height: 0;
 				z-index: -1;
-				background: _palette(border);
+				background: transparent;
 			}
 		}
 

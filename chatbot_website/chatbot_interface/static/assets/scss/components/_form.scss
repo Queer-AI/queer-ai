@@ -157,25 +157,30 @@
 
 	::-webkit-input-placeholder {
 		color: _palette(fg-light) !important;
-		opacity: 1.0;
+		text-align: center;
+		opacity: 0.7;
 	}
 
 	:-moz-placeholder {
 		color: _palette(fg-light) !important;
-		opacity: 1.0;
+		text-align: center;
+		opacity: 0.7;
 	}
 
 	::-moz-placeholder {
 		color: _palette(fg-light) !important;
-		opacity: 1.0;
+		text-align: center;
+		opacity: 0.7;
 	}
 
 	:-ms-input-placeholder {
 		color: _palette(fg-light) !important;
-		opacity: 1.0;
+		text-align: center;
+		opacity: 0.7;
 	}
 
 	.formerize-placeholder {
 		color: _palette(fg-light) !important;
-		opacity: 1.0;
+		text-align: center;
+		opacity: 0.7;
 	}
