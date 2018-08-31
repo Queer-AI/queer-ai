@@ -17,6 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'', include('chatbot_interface.urls')),
+    url(r'', include('chatbot_frontend.urls')),
 ]

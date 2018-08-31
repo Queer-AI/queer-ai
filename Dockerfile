@@ -4,15 +4,16 @@ FROM python:3.5.2
 
 ## Dependencies
 
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+
 RUN \
-  apt-get -qq -y update && apt-get -y install unzip
+  apt-get -qq -y update && apt-get -y install unzip nodejs
 
 RUN  \
   pip3 install -U nltk \
   awscli \
   tqdm \
   django==1.10.1 \
-  django-static-precompiler[libsass]==1.5 \
   asgi_redis \
   channels==1.1.6 && \
   python3 -m nltk.downloader punkt
@@ -25,14 +26,16 @@ RUN \
 
 COPY ./ /root/DeepQA
 
+WORKDIR /root/DeepQA
+
+RUN npm install
+
 ## Run Config
 
 # You should generate your own key if you want deploy it on a server
 ENV CHATBOT_SECRET_KEY="e#0y6^6mg37y9^+t^p_$xwnogcdh=27)f6_=v^$bh9p0ihd-%v"
 ENV CHATBOT_REDIS_URL="redis"
 EXPOSE 8000
-
-WORKDIR /root/DeepQA
 
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY

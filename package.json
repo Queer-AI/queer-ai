@@ -1,0 +1,46 @@
+{
+  "name": "chatbot_website",
+  "version": "0.0.1",
+  "description": "Homepage and chatbot for Queer AI.",
+  "main": "chatbot_frontend/src/index.js",
+  "scripts": {
+    "build": "webpack --config chatbot_website/webpack.config.js --progress --colors --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --config chatbot_website/webpack.config.js --watch --progress --colors --mode development"
+  },
+  "author": "Queer AI",
+  "homepage": "http://queer.ai",
+  "license": "ISC",
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ],
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "browserslist": ">1%, not dead",
+  "dependencies": {
+    "@babel/core": "7.0.0",
+    "@babel/plugin-proposal-class-properties": "7.0.0",
+    "@babel/polyfill": "7.0.0",
+    "@babel/preset-env": "7.0.0",
+    "@babel/preset-react": "7.0.0",
+    "ajv": "6.5.3",
+    "babel-loader": "8.0.0",
+    "babel-plugin-transform-react-jsx": "6.24.1",
+    "css-hot-loader": "1.4.2",
+    "css-loader": "1.0.0",
+    "mini-css-extract-plugin": "0.4.2",
+    "node-sass": "4.9.3",
+    "postcss-loader": "3.0.0",
+    "prop-types": "15.6.2",
+    "react": "16.4.2",
+    "react-dom": "16.4.2",
+    "sass-loader": "7.1.0",
+    "webpack": "4.17.1",
+    "webpack-bundle-tracker": "0.3.0",
+    "webpack-cli": "3.1.0"
+  }
+}

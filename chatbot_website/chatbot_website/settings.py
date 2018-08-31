@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'channels',
     'chatbot_interface',
-    'static_precompiler'
+    'chatbot_frontend',
 ]
 
 MIDDLEWARE = [
@@ -112,25 +112,6 @@ CHANNEL_LAYERS = {
         "ROUTING": "chatbot_interface.routing.channel_routing",
     },
 }
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # other finders..
-    'static_precompiler.finders.StaticPrecompilerFinder',
-)
-STATIC_ROOT = os.path.join(BASE_DIR, 'chatbot_interface', 'static')
-
-STATIC_PRECOMPILER_COMPILERS = (
-    ('static_precompiler.compilers.libsass.SCSS', {
-        "sourcemap_enabled": True,
-        "output_style": "compressed"
-    }),
-    ('static_precompiler.compilers.libsass.SASS', {
-        "sourcemap_enabled": True,
-        "output_style": "compressed"
-    }),
-)
 
 LOGGING = {
     'version': 1,
