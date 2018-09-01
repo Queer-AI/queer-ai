@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const babelPresets = require('../package.json').babel.presets;
 
 const FRONTEND_BASE = path.join(__dirname, 'chatbot_frontend')
-const BUILD_DIR = path.resolve(FRONTEND_BASE, 'static');
+const BUILD_DIR = path.resolve(FRONTEND_BASE, 'static', 'assets');
 const SRC_DIR = path.resolve(FRONTEND_BASE, 'src');
 const SCSS_DIR = path.resolve(FRONTEND_BASE, 'scss');
 

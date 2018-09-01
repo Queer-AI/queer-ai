@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+@import url('https://fonts.googleapis.com/css?family=Karla:300,400,700');
+
+@import 'utilities';
+@import 'variables';
+
+body {
+  font-family: 'Karla', Arial, sans-serif;
+  background-color: $white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $white;
+}

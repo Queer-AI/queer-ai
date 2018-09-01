@@ -1,5 +1,9 @@
 sudo: required
 
+branches:
+  only:
+    - master
+
 env:
   global:
     - DOCKER_TLS_VERIFY=1

@@ -1,4 +1,11 @@
+@import 'scss/utilities';
+@import 'scss/variables';
+
 :local(.container) {
-  margin: 20px auto;
-  max-width: 800px;
+  @include p;
+  @include mh(a);
+  @include mv(l);
+  background-color: $dark;
+  border-radius: 20px;
+  max-width: 100%;
 }

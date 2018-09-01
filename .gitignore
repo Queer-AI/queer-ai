@@ -20,7 +20,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+/lib/
 lib64/
 parts/
 sdist/
@@ -97,3 +97,5 @@ ENV/
 nvidia-docker-compose.yml
 
 node_modules/
+/chatbot_website/chatbot_frontend/static/assets/
+
