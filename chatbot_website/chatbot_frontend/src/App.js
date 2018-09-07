@@ -9,7 +9,7 @@ export default class App extends Component {
     return (
       <Container>
         <h1>Queer AI</h1>
-        <PerceptronDrawing height={800} src='/static/rainbow.jpg' width={800} />
+        <PerceptronDrawing height={512} src='/static/rainbow.jpg' width={512} />
       </Container>
     );
   }

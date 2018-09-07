@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 import Perceptron from '../../lib/Perceptron';
 
+import { perceptron } from './style.scss';
+
+const CANVAS_HEIGHT = 125;
+const CANVAS_WIDTH = 125;
+
 export default class PerceptronDrawing extends Component {
   static defaultProps = {
     height: 1024,
@@ -17,7 +22,7 @@ export default class PerceptronDrawing extends Component {
     super(props);
     this.imageData = null;
     this.numIterations = 0;
-    this.perceptron = new Perceptron(2, 32, 3);
+    this.perceptron = new Perceptron(2, 16, 3);
   }
   getCanvas() {
     //const canvas = document.createElement('canvas')
@@ -29,10 +34,9 @@ export default class PerceptronDrawing extends Component {
     return this.canvasEl;
   }
   getData(img) {
-    const { height, width } = this.props;
     const ctx = this.getCanvas().getContext('2d');
-    ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, width, height);
-    const data = ctx.getImageData(0, 0, width, height);
+    ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    const data = ctx.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     return data;
   }
   getImageData(src) {
@@ -47,11 +51,10 @@ export default class PerceptronDrawing extends Component {
     });
   }
   getPixel(x, y) {
-    const { height, width } = this.props;
     const data = this.imageData.data;
-    const red = data[ ((height * y) + x) * 4];
-    const green = data[ ((height * y) + x) * 4 + 1];
-    const blue = data[ ((height * y) + x) * 4 + 2];
+    const red = data[ ((CANVAS_HEIGHT * y) + x) * 4];
+    const green = data[ ((CANVAS_HEIGHT * y) + x) * 4 + 1];
+    const blue = data[ ((CANVAS_HEIGHT * y) + x) * 4 + 2];
     return [red / 255, green / 255, blue / 255];
   }
   componentDidMount() {
@@ -62,11 +65,10 @@ export default class PerceptronDrawing extends Component {
     });
   }
   train() {
-    const { height, width } = this.props;
-    for (let x = 0; x < width; x++) {
-      for(let y = 0; y < height; y++) {
+    for (let x = 0; x < CANVAS_WIDTH; x++) {
+      for(let y = 0; y < CANVAS_HEIGHT; y++) {
         const dynamicRate = .01 / (1 + .0005 * this.numIterations);
-        this.perceptron.activate([ x / width, y / height ]);
+        this.perceptron.activate([ x / CANVAS_WIDTH, y / CANVAS_HEIGHT ]);
         this.perceptron.propagate(dynamicRate, this.getPixel(x, y));
       }
     }
@@ -75,7 +77,8 @@ export default class PerceptronDrawing extends Component {
     requestAnimationFrame(() => this.train());
   }
   preview() {
-    const { height, width } = this.props;
+    const height = CANVAS_HEIGHT;
+    const width = CANVAS_WIDTH;
     const ctx = this.canvasEl.getContext('2d');
     const imageData = ctx.getImageData(0, 0, width, height);
     for (let x = 0; x < width; x++) {
@@ -91,8 +94,13 @@ export default class PerceptronDrawing extends Component {
   render() {
     const { height, width } = this.props;
     return (
-      <div>
-        <canvas height={height} ref={(ref) => this.canvasEl = ref } width={width} />
+      <div className={perceptron} style={{ height, width }}>
+        <canvas
+          height={CANVAS_HEIGHT}
+          ref={(ref) => this.canvasEl = ref }
+          style={{ transform: `scale3d(${width / CANVAS_WIDTH}, ${height / CANVAS_HEIGHT}, 1)` }}
+          width={CANVAS_WIDTH}
+          />
       </div>
     );
 
