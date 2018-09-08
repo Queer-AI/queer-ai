@@ -2,10 +2,22 @@
 @import 'scss/variables';
 
 :local(.container) {
-  @include p;
+  @include ph;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100%;
+  position: relative;
+  z-index: 1;
+}
+:local(.content) {
+  @include ph;
+  @include pv(s);
   @include mh(a);
-  @include mv(l);
-  background-color: $dark;
+  @include mv(s);
+  background-color: rgba(255, 255, 255, .7);
   border-radius: 20px;
+  width: 500px;
   max-width: 100%;
 }

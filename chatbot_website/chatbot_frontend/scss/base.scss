@@ -4,11 +4,22 @@
 @import 'utilities';
 @import 'variables';
 
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
+  @include m(0);
+  @include p(0);
   font-family: 'Karla', Arial, sans-serif;
   background-color: $white;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: $white;
+  color: $dark;
 }
