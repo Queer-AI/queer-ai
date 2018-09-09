@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Perceptron from '../../lib/Perceptron';
+import Perceptron from 'src/lib/perceptron';
 
 import { perceptron } from './style.scss';
 

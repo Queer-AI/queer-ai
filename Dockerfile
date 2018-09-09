@@ -15,6 +15,7 @@ RUN  \
   tqdm \
   django==1.10.1 \
   asgi_redis \
+  django-webpack-loader \
   channels==1.1.6 && \
   python3 -m nltk.downloader punkt
 
@@ -42,6 +43,8 @@ ARG AWS_SECRET_ACCESS_KEY
 ARG AWS_BUCKET_NAME
 
 RUN ./tag.sh pull
+
+RUN npm run build
 
 # Launch the server
 CMD ./manage.sh runserver 0.0.0.0:8000

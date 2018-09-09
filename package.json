@@ -4,9 +4,9 @@
   "description": "Homepage and chatbot for Queer AI.",
   "main": "chatbot_frontend/src/index.js",
   "scripts": {
-    "build": "webpack --config chatbot_website/webpack.config.js --progress --colors --mode development",
+    "build": "webpack --config chatbot_website/webpack.config.js --progress --colors --env.production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --config chatbot_website/webpack.config.js --watch --progress --colors --mode development"
+    "watch": "webpack --config chatbot_website/webpack.config.js --watch --progress --colors --env.development"
   },
   "author": "Queer AI",
   "homepage": "http://queer.ai",

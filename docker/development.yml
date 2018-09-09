@@ -1,7 +1,9 @@
 version: '2'
 services:
+  environment:
+    - DEBUG=true
   web:
     ports:
       - "8000:8000"
     volumes:
-      - ${PWD}/chatbot_website:/root/DeepQA/chatbot_website
+      - ${PWD}/chatbot_website:/root/QueerAI/chatbot_website

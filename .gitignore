@@ -98,4 +98,6 @@ nvidia-docker-compose.yml
 
 node_modules/
 /chatbot_website/chatbot_frontend/static/assets/
+/chatbot_website/webpack-stats.json
+
 

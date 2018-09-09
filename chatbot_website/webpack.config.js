@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleTracker = require('webpack-bundle-tracker');
 
 const babelPresets = require('../package.json').babel.presets;
 
@@ -9,8 +10,19 @@ const BUILD_DIR = path.resolve(FRONTEND_BASE, 'static', 'assets');
 const SRC_DIR = path.resolve(FRONTEND_BASE, 'src');
 const SCSS_DIR = path.resolve(FRONTEND_BASE, 'scss');
 
+
 module.exports = (env = {}) => {
+  const webpackPlugins = [
+    new BundleTracker({ path: __dirname, filename: './webpack-stats.json' }),
+    new MiniCssExtractPlugin({
+      filename: env.prod ? '[name]--[hash].css' : '[name].css',
+      chunkFilename: '[id].css'
+    })
+  ];
+  const stylePlugin = MiniCssExtractPlugin.loader;
+
   return {
+    context: __dirname,
     entry: {
       index: [
         '@babel/polyfill',
@@ -19,11 +31,11 @@ module.exports = (env = {}) => {
     },
     output: {
       path: BUILD_DIR,
-      publicPath: '/',
-      filename: env.prod ? '[name]--[hash].js' : '[name].bundle.js'
+      publicPath: '/static/assets/',
+      filename: env.production ? '[name]--[hash].js' : '[name].bundle.js'
     },
     // watch: true,
-    devtool: env.prod ? 'source-map' : 'cheap-module-eval-source-map',
+    devtool: env.production ? 'source-map' : 'cheap-module-eval-source-map',
     devServer: {
       contentBase: BUILD_DIR,
       //   port: 9001,
@@ -52,8 +64,7 @@ module.exports = (env = {}) => {
         {
           test: /\.(scss)$/,
           use: [
-            'css-hot-loader',
-            MiniCssExtractPlugin.loader,
+            stylePlugin,
             {
               loader: 'css-loader',
               options: {
@@ -68,12 +79,12 @@ module.exports = (env = {}) => {
                   const plugins = [
                     require('autoprefixer')()
                   ];
-                  if (env.prod) {
+                  if (env.production) {
                     plugins.push(require('cssnano')());
                   }
                   return plugins;
                 },
-                sourceMap: !env.prod
+                sourceMap: !env.production
               }
             },
             'sass-loader'
@@ -82,7 +93,7 @@ module.exports = (env = {}) => {
         {
           test: /\.css$/,
           use: [
-            MiniCssExtractPlugin.loader,
+            stylePlugin,
             'css-loader'
           ],
         }
@@ -101,13 +112,7 @@ module.exports = (env = {}) => {
         }
       }
     },
-    plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      new MiniCssExtractPlugin({
-        filename: '[name].css',
-        chunkFilename: '[id].css'
-      })
-    ],
+    plugins: webpackPlugins,
     resolve: {
       extensions: ['.js', '.scss', '.css', '.json'],
       alias: {
