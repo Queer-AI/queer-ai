@@ -18,3 +18,5 @@ Message.propTypes = {
   message: PropTypes.string,
   source: PropTypes.string
 };
+
+export default Message;
