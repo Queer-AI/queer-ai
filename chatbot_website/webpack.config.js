@@ -14,7 +14,7 @@ module.exports = (env = {}) => {
   const webpackPlugins = [
     new BundleTracker({ path: __dirname, filename: './webpack-stats.json' }),
     new MiniCssExtractPlugin({
-      filename: env.prod ? '[name]--[hash].css' : '[name].css',
+      filename: env.production ? '[name]--[hash].css' : '[name].css',
       chunkFilename: '[id].css'
     })
   ];
