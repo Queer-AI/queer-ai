@@ -26,7 +26,7 @@ export default class Background extends Component {
       () => this.setState({
         imageToDraw: this.state.imageToDraw < IMAGES.length - 1 ? this.state.imageToDraw + 1 : 0
       }),
-      60000
+      30000
     );
     this.resize();
     this.resizeEvent = window.addEventListener('resize', () => this.resize());

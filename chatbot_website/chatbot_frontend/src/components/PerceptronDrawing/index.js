@@ -5,8 +5,8 @@ import Perceptron from '../../lib/Perceptron';
 
 import { perceptron } from './style.scss';
 
-const CANVAS_HEIGHT = 130;
-const CANVAS_WIDTH = 130;
+const CANVAS_HEIGHT = 180;
+const CANVAS_WIDTH = 180;
 
 export default class PerceptronDrawing extends Component {
   static defaultProps = {
@@ -22,7 +22,7 @@ export default class PerceptronDrawing extends Component {
     super(props);
     this.imageData = null;
     this.numIterations = 0;
-    this.perceptron = new Perceptron(2, 8, 3);
+    this.perceptron = new Perceptron(2, 16, 3);
   }
   componentWillReceiveProps(newProps) {
     const { src } = newProps;
