@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: deepqa:latest
+    image: queerai:latest
     environment:
       - PYTHONUNBUFFERED=0
     depends_on:

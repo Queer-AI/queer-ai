@@ -15,7 +15,7 @@ before_install:
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
   - aws s3 sync "s3://${AWS_BUCKET_NAME}/DeepQA/docker-machine" .docker-machine --include "*"
-  - docker build -t deepqa:latest
+  - docker build -t queerai:latest
       --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
       --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
       --build-arg AWS_BUCKET_NAME=$AWS_BUCKET_NAME

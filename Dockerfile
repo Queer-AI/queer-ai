@@ -1,4 +1,4 @@
-## Dockerfile to build DeepQ&A container image
+## Dockerfile to build QueerAI container image
 ## This image is for running the webserver, for training see Dockerfile.gpu
 FROM python:3.5.2
 
@@ -24,9 +24,9 @@ ARG TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow
 RUN \
   pip3 install -U $TF_BINARY_URL
 
-COPY ./ /root/DeepQA
+COPY ./ /root/QueerAI
 
-WORKDIR /root/DeepQA
+WORKDIR /root/QueerAI
 
 RUN npm install
 
