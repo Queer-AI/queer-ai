@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Varela+Round');
-@import url('https://fonts.googleapis.com/css?family=Karla:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Unica+One');
 
 @import 'utilities';
 @import 'variables';
@@ -15,11 +14,17 @@ html {
 body {
   @include m(0);
   @include p(0);
-  font-family: 'Karla', Arial, sans-serif;
   background-color: $white;
   margin: 0;
 }
+body, form, input {
+  font-family: 'Unica One', Arial, sans-serif;
+}
 
 h1, h2, h3, h4, h5, h6 {
+  @include m(0);
   color: $dark;
+  font-size: 2.5em;
+  letter-spacing: 0.07em;
+  text-align: center;
 }

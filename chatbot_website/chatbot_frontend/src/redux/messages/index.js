@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import uuid from 'uuid/v4';
 import * as types from './constants';
 
 const messages = (state = [], { message, type }) => {
@@ -7,8 +8,9 @@ const messages = (state = [], { message, type }) => {
       return [
         ...state,
         {
-          messsage,
-          source: 'bot'
+          message,
+          source: 'bot',
+          uuid: uuid()
         }
       ];
     case types.MESSAGE_SENT:
@@ -16,7 +18,8 @@ const messages = (state = [], { message, type }) => {
         ...state,
         {
           message,
-          source: 'user'
+          source: 'user',
+          uuid: uuid()
         }
       ];
     default:

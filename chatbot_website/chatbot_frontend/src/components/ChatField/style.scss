@@ -1,0 +1,29 @@
+@import 'scss/utilities';
+@import 'scss/variables';
+
+$button-width: 100px;
+
+:local(.wrap) {
+  position: relative;
+}
+
+:local(.chatField) {
+  @include appearance-reset;
+  display: inline-block;
+  padding-right: $button-width;
+  text-transform: uppercase;
+  width: 100%;
+}
+:local(.submitButton) {
+  @include appearance-reset;
+  border-left: 1px solid transparentize($dark, .9);
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  text-transform: uppercase;
+  width: $button-width;
+  ::placeholder {
+    color: transparentize($dark, .5);
+  }
+}

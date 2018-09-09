@@ -1,0 +1,6 @@
+{
+  "extends": "eslint-config-blerchin/react",
+  "globals": {
+    "sinonSandbox": true
+  }
+}

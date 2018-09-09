@@ -64,10 +64,15 @@ module.exports = (env = {}) => {
               loader: 'postcss-loader',
               options: {
                 ident: 'postcss',
-                plugins: () => env.prod ? [
-                  require('autoprefixer')(),
-                  require('cssnano')()
-                ] : [],
+                plugins: () => {
+                  const plugins = [
+                    require('autoprefixer')()
+                  ];
+                  if (env.prod) {
+                    plugins.push(require('cssnano')());
+                  }
+                  return plugins;
+                },
                 sourceMap: !env.prod
               }
             },

@@ -1,8 +1,7 @@
 import ReconnectingWebsocket from 'reconnecting-websocket';
 
-const URL = '//chat';
 var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-const URL = `${ws_scheme}://${window.location.host$}/chat`;
+const URL = `${ws_scheme}://${window.location.host}/chat`;
 
 export default class Subscriber {
   constructor(options = {}) {
@@ -46,10 +45,10 @@ export default class Subscriber {
 
   onMessage(message) {
     const { handleMessage } = this.handlers;
-    handleMessage && handleMessage({ message: JSON.parse(message.data) });
+    handleMessage && handleMessage(JSON.parse(message.data));
   }
 
-  subscribe(streamNames) {
+  subscribe() {
     if (this.subscriber && this.subscriber.running) {
       this.subscriber.stop();
     }

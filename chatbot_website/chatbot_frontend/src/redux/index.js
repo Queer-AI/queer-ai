@@ -7,4 +7,4 @@ export default combineReducers({
   messages
 });
 
-export const getMessages = (state) => messsageSelectors.getMessages(state.messages)
+export const getMessages = (state) => messageSelectors.getMessages(state.messages);
