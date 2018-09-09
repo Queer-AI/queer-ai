@@ -125,14 +125,6 @@ $spacing: (
 @mixin offset($n) {
   margin-left: $n * $column;
 }
-@for $i from 1 through 6 {
-  .col-#{$i} {
-    @include col($i);
-  }
-  .offset-#{$i} {
-    @include offset($i);
-  }
-}
 
 @mixin proportional($width, $height) {
   $ratio: $height / $width * 100%;

@@ -67,7 +67,7 @@ module.exports = (env = {}) => {
             {
               loader: 'css-loader',
               options: {
-                localIdentName: '[local]--[hash:base64:5]'
+                localIdentName: env.production ? '[hash:base64]' : '[local]--[hash:base64:5]'
               }
             },
             {
