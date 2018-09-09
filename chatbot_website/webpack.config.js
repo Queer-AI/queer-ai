@@ -1,11 +1,10 @@
-const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleTracker = require('webpack-bundle-tracker');
 
 const babelPresets = require('../package.json').babel.presets;
 
-const FRONTEND_BASE = path.join(__dirname, 'chatbot_frontend')
+const FRONTEND_BASE = path.join(__dirname, 'chatbot_frontend');
 const BUILD_DIR = path.resolve(FRONTEND_BASE, 'static', 'assets');
 const SRC_DIR = path.resolve(FRONTEND_BASE, 'src');
 const SCSS_DIR = path.resolve(FRONTEND_BASE, 'scss');
@@ -95,7 +94,7 @@ module.exports = (env = {}) => {
           use: [
             stylePlugin,
             'css-loader'
-          ],
+          ]
         }
       ]
     },

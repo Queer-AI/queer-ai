@@ -47,8 +47,8 @@ class ChatLog extends Component {
       <div
         className={`${messagesWrap} ${hasOverflow ? 'has-overflow' : ''}`}
         ref={(el) => this.wrapEl = el}
-        >
-        {messages.map((item, i) => (
+      >
+        {messages.map((item) => (
           <Message {...item} key={item.uuid} />
         ))}
       </div>

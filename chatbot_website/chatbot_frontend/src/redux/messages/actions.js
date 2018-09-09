@@ -27,7 +27,7 @@ export const connect = () => (dispatch) => {
   }));
 };
 
-export const disconnect = () => (dispatch) => {
+export const disconnect = () => () => {
   sub.unsubscribe();
 };
 

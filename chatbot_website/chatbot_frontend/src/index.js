@@ -8,14 +8,13 @@ import thunk from 'redux-thunk';
 import reducers from './redux';
 import * as messageActions from 'src/redux/messages/actions';
 
-const store = createStore(reducers, {}, applyMiddleware(thunk))
+const store = createStore(reducers, {}, applyMiddleware(thunk));
 store.dispatch(messageActions.connect());
 
 
-ReactDOM.render((
-    <Provider store={store}>
-      <App />
-    </Provider>
-  ),
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app')
 );

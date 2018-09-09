@@ -1,14 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Content } from '../Container';
 
 import { chatMessage } from './style.scss';
 
-export default ({ index, message, source }) => (
+const Message = ({ message, source }) => (
   <Content
+    align={source === 'bot' ? 'left' : 'right'}
     className={chatMessage}
     inline
-    align={source === 'bot' ? 'left' : 'right'}
   >
     {message}
   </Content>
 );
+
+Message.propTypes = {
+  message: PropTypes.string,
+  source: PropTypes.string
+};

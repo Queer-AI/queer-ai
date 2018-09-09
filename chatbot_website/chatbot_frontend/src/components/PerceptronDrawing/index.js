@@ -24,10 +24,6 @@ export default class PerceptronDrawing extends Component {
     this.numIterations = 0;
     this.perceptron = new Perceptron(2, 16, 3);
   }
-  componentWillReceiveProps(newProps) {
-    const { src } = newProps;
-    this.loadImage(src);
-  }
   componentDidMount() {
     const { src } = this.props;
     this.loadImage(src)
@@ -36,11 +32,15 @@ export default class PerceptronDrawing extends Component {
         this.train();
       });
   }
+  componentWillReceiveProps(newProps) {
+    const { src } = newProps;
+    this.loadImage(src);
+  }
   getCanvas() {
-    const canvas = document.createElement('canvas')
+    const canvas = document.createElement('canvas');
     canvas.height = CANVAS_HEIGHT;
     canvas.weidth = CANVAS_WIDTH;
-    const fragment = document.createDocumentFragment()
+    const fragment = document.createDocumentFragment();
     fragment.appendChild(canvas);
     return canvas;
   }
@@ -81,10 +81,10 @@ export default class PerceptronDrawing extends Component {
   train() {
     if (this.imageData) {
       for (let x = 0; x < CANVAS_WIDTH; x++) {
-        for(let y = 0; y < CANVAS_HEIGHT; y++) {
+        for (let y = 0; y < CANVAS_HEIGHT; y++) {
           //const dynamicRate = .01 / (1 + .0005 * this.numIterations);
-          const dynamicRate = .01 / (1.1);
-          this.perceptron.activate([ x / CANVAS_WIDTH, y / CANVAS_HEIGHT ]);
+          const dynamicRate = 0.01 / (1.1);
+          this.perceptron.activate([x / CANVAS_WIDTH, y / CANVAS_HEIGHT]);
           this.perceptron.propagate(dynamicRate, this.getPixel(x, y));
         }
       }
@@ -94,13 +94,11 @@ export default class PerceptronDrawing extends Component {
     requestAnimationFrame(() => this.train());
   }
   preview() {
-    const height = CANVAS_HEIGHT;
-    const width = CANVAS_WIDTH;
     const ctx = this.canvasEl.getContext('2d');
     const canvasData = ctx.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     for (let x = 0; x < CANVAS_WIDTH; x++) {
-      for(let y = 0; y < CANVAS_HEIGHT; y++) {
-        const rgb = this.perceptron.activate([ x / CANVAS_WIDTH, y / CANVAS_HEIGHT ]);
+      for (let y = 0; y < CANVAS_HEIGHT; y++) {
+        const rgb = this.perceptron.activate([x / CANVAS_WIDTH, y / CANVAS_HEIGHT]);
         canvasData.data[ ((CANVAS_HEIGHT * y) + x) * 4] = rgb[0] * 255;
         canvasData.data[ ((CANVAS_HEIGHT * y) + x) * 4 + 1] = rgb[1] * 255;
         canvasData.data[ ((CANVAS_HEIGHT * y) + x) * 4 + 2] = rgb[2] * 255;
@@ -114,10 +112,10 @@ export default class PerceptronDrawing extends Component {
       <div className={perceptron} style={{ height, width }}>
         <canvas
           height={CANVAS_HEIGHT}
-          ref={(ref) => this.canvasEl = ref }
+          ref={(ref) => this.canvasEl = ref}
           style={{ transform: `scale3d(${width / CANVAS_WIDTH}, ${height / CANVAS_HEIGHT}, 1)` }}
           width={CANVAS_WIDTH}
-          />
+        />
       </div>
     );
 

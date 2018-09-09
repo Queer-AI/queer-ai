@@ -1,7 +1,7 @@
 import ReconnectingWebsocket from 'reconnecting-websocket';
 
-var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-const URL = `${ws_scheme}://${window.location.host}/chat`;
+const wsScheme = window.location.protocol === 'https:' ? 'wss' : 'ws';
+const URL = `${wsScheme}://${window.location.host}/chat`;
 
 export default class Subscriber {
   constructor(options = {}) {
@@ -52,7 +52,7 @@ export default class Subscriber {
     if (this.subscriber && this.subscriber.running) {
       this.subscriber.stop();
     }
-    this.subscriber = new ReconnectingWebsocket(URL)
+    this.subscriber = new ReconnectingWebsocket(URL);
     this.subscriber.addEventListener('message', this.onMessage.bind(this));
     this.subscriber.addEventListener('error', this.onError.bind(this));
     this.subscriber.addEventListener('close', this.onDisconnect.bind(this));
