@@ -3,3 +3,7 @@ services:
   web:
     ports:
       - "80:8000"
+    depends_on: redis
+  redis:
+    image: redis
+      - redis

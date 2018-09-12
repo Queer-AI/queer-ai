@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 set -e
-
-if [ -f .env ]; then
-  source .env
+if [ -f .env ];
+  then source .env
 fi
 
 export AWS_ACCESS_KEY_ID
@@ -30,19 +29,22 @@ if [ "$1" = "push" ]; then
   TAG_DIR="${MODEL_DIR}-${tag}"
   echo "Tagging current model as ${tag}."
   echo "Uploading to AWS..."
-  aws s3 cp "${MODEL_DIR}/" "${S3_KEY_PREFIX}/${tag}/model" --include "*"
-  aws s3 cp "${DATA_DIR}/" "${S3_KEY_PREFIX}/${tag}/data" --include "*"
-  cp $MODEL_DIR $TAG_DIR
+  aws s3 cp "${MODEL_DIR}/" "${S3_KEY_PREFIX}/${tag}/model" --include "*" --recursive
+  aws s3 cp "${DATA_DIR}/" "${S3_KEY_PREFIX}/${tag}/data" --include "*" --recursive
+  cp -R $MODEL_DIR $TAG_DIR
   echo $tag >> modelTag.list
   echo $tag > modelTag.current
   echo "Tagged current model and uploaded to AWS."
 elif [ "$1" = "pull" ]; then
 
-  if [ "$#" -gt 1 ]; then
+  if [[ "$#" -gt 1 ]]; then
     tag=$2
-  elif [ -z "$MODEL_TAG" ]; then
+  elif [[ -z "$MODEL_TAG" && -f "modelTag.current" ]]; then
     tag=$(cat modelTag.current)
     echo "MODEL_TAG not specified. Using modelTag.current."
+  elif [[ -z "$MODEL_TAG" ]]; then
+    echo "No MODEL_TAG could be found, and no data was pulled."
+    exit 0
   else
     echo "env"
     tag=$MODEL_TAG
@@ -57,5 +59,5 @@ elif [ "$1" = "pull" ]; then
     echo "Loaded model."
   fi
 else
-  "Usage: ./tag.sh pull|push [tag]";
+  echo "Usage: ./tag.sh pull|push [tag]";
 fi
