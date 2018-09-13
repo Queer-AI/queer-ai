@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['CHATBOT_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG'] or False
+DEBUG = os.getenv('DEBUG') or False
 if not DEBUG:
     BASICAUTH_USERNAME = os.environ['BASICAUTH_USERNAME']
     BASICAUTH_PASSWORD = os.environ['BASICAUTH_PASSWORD']
