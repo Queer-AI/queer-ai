@@ -4,6 +4,8 @@ services:
     image: queerai:latest
     environment:
       - PYTHONUNBUFFERED=0
+      - BASICAUTH_USERNAME
+      - BASICAUTH_PASSWORD
     depends_on:
       - redis
   redis:

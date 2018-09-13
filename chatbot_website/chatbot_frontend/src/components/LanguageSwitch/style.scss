@@ -23,15 +23,17 @@ $button-width: 30px;
   }
 }
 :local(.slider) {
-  @include bubble;
   @include mv(0);
   @include p(0);
+  border-radius: 7px;
+  background: transparentize($white, .1);
   bottom: 0;
   top: 0;
   left: 0;
   pointer-events: none;
   position: absolute;
   transition: transform 0.3s ease-out;
+  z-index: 1;
   width: 50%;
   &.on {
     transform: translateX(100%);
