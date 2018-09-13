@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Content } from '../Container';
 
-import * as actions from 'src/redux/messages/actions';
+import { send } from 'src/redux/messages/actions';
 
 import { chatField, submitButton, wrap } from './style.scss';
 
@@ -49,7 +49,7 @@ class ChatField extends Component {
 }
 
 const mapDispatch = (dispatch) => ({
-  send: (message) => dispatch(actions.send(message))
+  send: (message) => dispatch(send(message))
 });
 
 export default connect(null, mapDispatch)(ChatField);

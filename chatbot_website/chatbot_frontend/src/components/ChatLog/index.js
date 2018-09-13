@@ -57,7 +57,7 @@ class ChatLog extends Component {
 }
 
 const mapState = (state) => ({
-  messages: selectors.getMessages(state)
+  messages: selectors.getMessagesLocal(state)
 });
 
 export default connect(mapState)(ChatLog);

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import uuid from 'uuid/v4';
 import * as types from './constants';
+import { SET_TRANSLATION_LANGUAGE } from '../translation/constants';
 
 const messages = (state = [], { message, type }) => {
   switch (type) {
@@ -13,7 +14,7 @@ const messages = (state = [], { message, type }) => {
           uuid: uuid()
         }
       ];
-    case types.MESSAGE_SENT:
+    case types.MESSAGE_SEND_SUCCESS:
       return [
         ...state,
         {
@@ -22,6 +23,8 @@ const messages = (state = [], { message, type }) => {
           uuid: uuid()
         }
       ];
+    case SET_TRANSLATION_LANGUAGE:
+      return [];
     default:
       return state;
   }

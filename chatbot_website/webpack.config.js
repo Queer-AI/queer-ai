@@ -1,3 +1,5 @@
+require('dotenv').config();
+const { EnvironmentPlugin } = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleTracker = require('webpack-bundle-tracker');
@@ -12,6 +14,7 @@ const SCSS_DIR = path.resolve(FRONTEND_BASE, 'scss');
 
 module.exports = (env = {}) => {
   const webpackPlugins = [
+    new EnvironmentPlugin(['GCP_API_KEY']),
     new BundleTracker({ path: __dirname, filename: './webpack-stats.json' }),
     new MiniCssExtractPlugin({
       filename: env.production ? '[name]--[hash].css' : '[name].css',
@@ -34,7 +37,7 @@ module.exports = (env = {}) => {
       filename: env.production ? '[name]--[hash].js' : '[name].bundle.js'
     },
     // watch: true,
-    devtool: env.production ? 'source-map' : 'cheap-module-eval-source-map',
+    devtool: env.production ? 'eval' : 'eval-source-map',
     devServer: {
       contentBase: BUILD_DIR,
       //   port: 9001,

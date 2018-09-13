@@ -4,17 +4,18 @@ import { Content } from '../Container';
 
 import { chatMessage } from './style.scss';
 
-const Message = ({ message, source }) => (
+const Message = ({ local, message, source }) => (
   <Content
     align={source === 'bot' ? 'left' : 'right'}
     className={chatMessage}
     inline
   >
-    {message}
+    {source === 'bot' ? local : message}
   </Content>
 );
 
 Message.propTypes = {
+  local: PropTypes.string,
   message: PropTypes.string,
   source: PropTypes.string
 };
