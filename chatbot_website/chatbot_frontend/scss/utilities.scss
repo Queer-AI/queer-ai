@@ -165,3 +165,11 @@ $spacing: (
   outline: none;
   width: auto;
 }
+
+@mixin bubble {
+  @include p;
+  @include mv(s);
+  background: linear-gradient(to right, transparentize($white, .4), transparentize($white, .3), transparentize($white, .4));
+  border-radius: 15px;
+  box-shadow: 0 0 $shadow-size $shadow-size transparentize($dark, .99);
+}

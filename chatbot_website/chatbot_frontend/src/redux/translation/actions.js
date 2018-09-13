@@ -35,7 +35,11 @@ export const fetchEn = (phrase) => (dispatch, getState) => {
   }
 };
 
-export const setLanguage = (language) => ({
-  language,
-  type: types.SET_TRANSLATION_LANGUAGE
-});
+export const setLanguage = (language) => (dispatch, getState) => {
+  if (getTranslationLanguage(getState()) !== language) {
+    dispatch({
+      language,
+      type: types.SET_TRANSLATION_LANGUAGE
+    });
+  }
+};
