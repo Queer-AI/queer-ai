@@ -28,7 +28,10 @@ if not DEBUG:
     BASICAUTH_USERNAME = os.environ['BASICAUTH_USERNAME']
     BASICAUTH_PASSWORD = os.environ['BASICAUTH_PASSWORD']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.queer.ai',
+    'ec2-54-193-100-110.us-west-1.compute.amazonaws.com'
+]
 
 
 # Application definition
