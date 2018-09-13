@@ -9,6 +9,7 @@ python3 manage.py migrate
 if [[ -z $DEBUG ]]; then
     ./manage.py "$@"
 else
+    echo "Starting webserver and webpack watch."
     ./manage.py "$@" & npm run watch
 fi
 
