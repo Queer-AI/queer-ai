@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import * as types from './constants';
 
-const translationLanguage = (state = 'es', { language, type }) =>
+const translationLanguage = (state = null, { language, type }) =>
   type === types.SET_TRANSLATION_LANGUAGE ? language : state;
 
 const translationsByPhrase = (state = {}, { phrase, translation, type }) => {
