@@ -21,4 +21,4 @@ before_install:
       --build-arg AWS_BUCKET_NAME=$AWS_BUCKET_NAME
       --build-arg GCP_API_KEY=$GCP_API_KEY
       .
-  - docker-compose -f docker-compose.yml -f docker/production.yml up
+  - docker-compose -f docker-compose.yml -f docker/production.yml up -d
