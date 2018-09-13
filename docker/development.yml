@@ -3,6 +3,8 @@ services:
   web:
     environment:
       - DEBUG=true
+      - BASICAUTH_USERNAME=foo
+      - BASICAUTH_PASSWORD=bar
     ports:
       - "8000:8000"
     volumes:

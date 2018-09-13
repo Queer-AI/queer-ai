@@ -23,12 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['CHATBOT_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG') or False
-if not DEBUG:
-    BASICAUTH_USERNAME = os.environ['BASICAUTH_USERNAME']
-    BASICAUTH_PASSWORD = os.environ['BASICAUTH_PASSWORD']
+DEBUG = True
+BASICAUTH_USERNAME = os.environ['BASICAUTH_USERNAME']
+BASICAUTH_PASSWORD = os.environ['BASICAUTH_PASSWORD']
 
 ALLOWED_HOSTS = [
+    'localhost',
     '.queer.ai',
     'ec2-54-193-100-110.us-west-1.compute.amazonaws.com'
 ]
@@ -50,7 +50,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'chatbot_website.basic_auth.BasicAuthMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'chatbot_website.basic_auth.BasicAuthMiddleware',
 ]
 
 ROOT_URLCONF = 'chatbot_website.urls'

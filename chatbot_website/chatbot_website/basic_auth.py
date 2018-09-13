@@ -9,8 +9,8 @@ AUTH_TEMPLATE = """<title>Authentication Required</title>"""
 class BasicAuthMiddleware(object):
     def __init__(self, get_response):
         self.get_response = get_response
-        if settings.DEBUG:
-            raise MiddlewareNotUsed
+        #if settings.DEBUG:
+        #    raise MiddlewareNotUsed
 
     def _unauthed(self):
         response = HttpResponse(AUTH_TEMPLATE, content_type="text/html")
