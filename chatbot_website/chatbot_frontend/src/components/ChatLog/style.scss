@@ -1,5 +1,7 @@
+@import 'scss/utilities';
+
 :local(.messagesWrap) {
-  max-height: 60vh;
+  max-height: 70vh;
   overflow: auto;
   position: relative;
   transition: height ease-out .5s;
@@ -14,4 +16,10 @@
 :local(.chatMessage) {
   max-width: 80%;
   text-transform: uppercase;
+  .left {
+    @include mr;
+  }
+  .right {
+    @include ml;
+  }
 }
