@@ -5,7 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import throttle from 'lodash.throttle';
+import { throttle } from 'lodash';
 import { loadState, saveState } from './localStorage';
 
 import reducers from './redux';

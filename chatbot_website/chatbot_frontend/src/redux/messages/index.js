@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { findLast } from 'lodash';
 import uuid from 'uuid/v4';
 import * as types from './constants';
 import { SET_TRANSLATION_LANGUAGE } from '../translation/constants';
@@ -35,3 +36,8 @@ export default combineReducers({
 });
 
 export const getMessages = (state) => state.messages;
+
+export const getLastBotMessage = (state) => {
+  const item = findLast(state.messages, ((m) => m.source === 'bot'));
+  return item && item.message;
+};

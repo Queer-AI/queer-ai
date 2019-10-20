@@ -24,12 +24,13 @@ SECRET_KEY = os.environ['CHATBOT_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-BASICAUTH_USERNAME = os.environ['BASICAUTH_USERNAME']
-BASICAUTH_PASSWORD = os.environ['BASICAUTH_PASSWORD']
+#BASICAUTH_USERNAME = os.environ['BASICAUTH_USERNAME']
+#BASICAUTH_PASSWORD = os.environ['BASICAUTH_PASSWORD']
 
 ALLOWED_HOSTS = [
     'localhost',
     '.queer.ai',
+    'ec2-52-37-174-36.us-west-2.compute.amazonaws.com',
     'ec2-54-193-100-110.us-west-1.compute.amazonaws.com'
 ]
 
@@ -57,7 +58,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'chatbot_website.basic_auth.BasicAuthMiddleware',
 ]
 
 ROOT_URLCONF = 'chatbot_website.urls'

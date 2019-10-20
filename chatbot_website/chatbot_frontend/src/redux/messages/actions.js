@@ -1,6 +1,6 @@
 import * as types from './constants';
 import { fetchEn, fetchLocal } from '../translation/actions';
-import { getEn } from 'src/redux';
+import { getLastBotMessage, getEn } from 'src/redux';
 import Subscriber from 'src/api/messages/subscriber';
 
 const sub = new Subscriber();
@@ -41,7 +41,7 @@ export const send = (message) => (dispatch, getState) => {
   dispatch(fetchEn(message)).then(() => {
     const state = getState();
     const en = getEn(state, message);
-    sub.send(en);
+    sub.send(en, getLastBotMessage(state));
     dispatch({
       message,
       type: types.MESSAGE_SEND_SUCCESS

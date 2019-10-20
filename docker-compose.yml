@@ -8,5 +8,7 @@ services:
       - BASICAUTH_PASSWORD
     depends_on:
       - redis
+    ports:
+      - "80:8000"
   redis:
     image: redis

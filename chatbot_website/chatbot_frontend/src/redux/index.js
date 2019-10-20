@@ -14,6 +14,9 @@ export default combineReducers({
 export const getMessages = (state) =>
   messageSelectors.getMessages(state.messages);
 
+export const getLastBotMessage = (state) =>
+  messageSelectors.getLastBotMessage(state.messages);
+
 export const getTranslationLanguage = (state) =>
   translationSelectors.getTranslationLanguage(state.translation);
 
