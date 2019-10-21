@@ -17,5 +17,6 @@ class Reporting():
         airtable.report_response({
             'Question': question_id,
             'Question Text': question_text,
-            'Response': response['message']
+            'Response': response['message'],
+            'Session ID': response['session']
         })

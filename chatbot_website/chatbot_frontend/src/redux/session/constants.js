@@ -1,0 +1,1 @@
+export const START_SESSION = 'START_SESSION';

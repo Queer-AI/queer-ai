@@ -3,6 +3,7 @@ import { findLast } from 'lodash';
 import uuid from 'uuid/v4';
 import * as types from './constants';
 import { SET_TRANSLATION_LANGUAGE } from '../translation/constants';
+import { START_SESSION } from '../session/constants';
 
 const messages = (state = [], { message, type }) => {
   switch (type) {
@@ -24,6 +25,7 @@ const messages = (state = [], { message, type }) => {
           uuid: uuid()
         }
       ];
+    case START_SESSION:
     case SET_TRANSLATION_LANGUAGE:
       return [];
     default:

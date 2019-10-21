@@ -2,13 +2,16 @@ import { combineReducers } from 'redux';
 
 import * as messageSelectors from './messages';
 import * as translationSelectors from './translation';
+import * as sessionSelectors from './session';
 
 import messages from './messages';
 import translation from './translation';
+import session from './session';
 
 export default combineReducers({
   messages,
-  translation
+  translation,
+  session
 });
 
 export const getMessages = (state) =>
@@ -28,6 +31,9 @@ export const getLocal = (state, phrase) =>
 
 export const getEn = (state, phrase) =>
   translationSelectors.getEn(state.translation, phrase);
+
+export const getCurrentSession = (state) =>
+  sessionSelectors.getCurrentSession(state.session);
 
 
 export const getMessagesLocal = (state) =>

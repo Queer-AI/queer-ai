@@ -1,0 +1,24 @@
+$switch-height: 30px;
+$button-width: 30px;
+@import 'scss/utilities';
+
+:local(.wrap) {
+  @include m;
+  @include p(s);
+  bottom: 0;
+  height: $switch-height;
+  position: fixed;
+  right: 0;
+  .label {
+    @include mv(s);
+    cursor: pointer;
+    text-transform: uppercase;
+    &.on {
+      @include pr(s);
+    }
+    &.off {
+      @include pl(s)
+    }
+
+  }
+}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Container from 'src/components/Container';
-import Background from 'src/components/Background';
 import ChatField from 'src/components/ChatField';
 import ChatLog from 'src/components/ChatLog';
+import SessionStart from 'src/components/SessionStart';
 
 import '../scss/base.scss';
 
@@ -11,10 +11,10 @@ export default class App extends Component {
     return (
       <div>
         <h1>Queer AI</h1>
-        <Background />
         <Container>
           <ChatLog />
           <ChatField />
+          <SessionStart />
         </Container>
       </div>
     );
