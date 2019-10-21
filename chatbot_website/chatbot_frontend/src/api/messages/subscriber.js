@@ -64,7 +64,7 @@ export default class Subscriber {
     this.handlers = {};
   }
 
-  send(message, respondingTo = null) {
-    this.subscriber.send(JSON.stringify({ message, respondingTo }));
+  send(data) {
+    this.subscriber.send(JSON.stringify(data));
   }
 }

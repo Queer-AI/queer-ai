@@ -16,6 +16,7 @@ RUN  \
   django==1.10.1 \
   asgi_redis \
   django-webpack-loader \
+  requests \
   channels==1.1.6 && \
   python3 -m nltk.downloader punkt
 

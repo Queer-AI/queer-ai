@@ -5,9 +5,12 @@ import sys
 import json
 
 from .chatbotmanager import ChatbotManager
+from .reporting import Reporting
 
 
 logger = logging.getLogger(__name__)
+
+reporting = Reporting()
 
 
 def _getClientName(client):
@@ -48,6 +51,8 @@ def ws_receive(message):
     question = data['message']
     try:
         answer = ChatbotManager.callBot(question)
+        reporting.report(data)
+
     except:  # Catching all possible mistakes
         logger.error('{}: Error with this question {}'.format(clientName, question))
         logger.error("Unexpected error:", sys.exc_info()[0])

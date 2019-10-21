@@ -29,8 +29,7 @@ export const connect = () => (dispatch) => {
       type: types.MESSAGE_RECEIVED
     });
     dispatch(fetchLocal(message));
-  }
-  );
+  });
 };
 
 export const disconnect = () => () => {
@@ -41,7 +40,7 @@ export const send = (message) => (dispatch, getState) => {
   dispatch(fetchEn(message)).then(() => {
     const state = getState();
     const en = getEn(state, message);
-    sub.send(en, getLastBotMessage(state));
+    sub.send({ message: en, respondingTo: getLastBotMessage(state) });
     dispatch({
       message,
       type: types.MESSAGE_SEND_SUCCESS

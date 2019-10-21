@@ -6,6 +6,7 @@ services:
       - PYTHONUNBUFFERED=0
       - BASICAUTH_USERNAME
       - BASICAUTH_PASSWORD
+      - AIRTABLE_API_KEY
     depends_on:
       - redis
     ports:
