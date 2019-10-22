@@ -19,17 +19,23 @@ class Airtable():
                 if category not in self.questions_by_category:
                     self.questions_by_category[category] = []
                 self.questions_by_category[category].append(record)
-                self.questions_by_id[record['id']] = record['fields']['Question']
+                self.questions_by_id[record['id']] = record
+
+    def ensure_questions(self):
+        if self.questions_by_id == None or self.questions_by_category == None:
+            self.get_questions()
 
     def get_questions_by_id(self):
-        if self.questions_by_id == None:
-            self.get_questions()
+        self.ensure_questions()
         return self.questions_by_id
 
     def get_questions_by_category(self):
-        if self.questions_by_category == None:
-            self.get_questions()
+        self.ensure_questions()
         return self.questions_by_category
+
+    def get_categories(self):
+        self.ensure_questions()
+        return list(self.questions_by_category.keys())
 
     def report_response(self, fields):
         data = {

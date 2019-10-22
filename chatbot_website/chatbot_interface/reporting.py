@@ -7,7 +7,7 @@ class Reporting():
     def get_id_by_question(self, question):
         questions_by_id = airtable.get_questions_by_id()
         for id in questions_by_id:
-            if questions_by_id[id] == question:
+            if questions_by_id[id]['fields']['Question'] == question:
                 return id
 
     def report(self, response):

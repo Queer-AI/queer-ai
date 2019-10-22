@@ -3,14 +3,17 @@ from channels.sessions import channel_session
 import logging
 import sys
 import json
+import random
 
 from .chatbotmanager import ChatbotManager
 from .reporting import Reporting
+from .survey import Survey
 
 
 logger = logging.getLogger(__name__)
 
 reporting = Reporting()
+survey = Survey()
 
 
 def _getClientName(client):
@@ -49,9 +52,13 @@ def ws_receive(message):
 
     # Compute the prediction
     question = data['message']
+    session_id = data['session']
     try:
-        answer = ChatbotManager.callBot(question)
         reporting.report(data)
+        if random.randint(0, 10) == 0:
+            answer = survey.get_next_question_text(session_id)
+        else:
+            answer = ChatbotManager.callBot(question)
 
     except:  # Catching all possible mistakes
         logger.error('{}: Error with this question {}'.format(clientName, question))
