@@ -37,12 +37,17 @@ class Airtable():
         self.ensure_questions()
         return list(self.questions_by_category.keys())
 
+    def format_response(self, fields):
+        return { 'fields' : fields }
+
+    def send_records(self, records):
+        data = { 'records': records }
+        response = requests.post(RESPONSES_URL, json=data, headers=authorization)
+        print(response.text)
+
+    def report_responses(self, responses):
+        records = [ self.format_response(r) for r in responses ]
+        self.send_records(records)
+
     def report_response(self, fields):
-        data = {
-            'records': [
-                {
-                    'fields': fields
-                }
-            ]
-        }
-        requests.post(RESPONSES_URL, json=data, headers=authorization)
+        self.send_records([ self.format_response(fields) ])
