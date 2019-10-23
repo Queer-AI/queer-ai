@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BackgroundVideo from 'src/components/Background/video';
 import Container from 'src/components/Container';
 import ChatField from 'src/components/ChatField';
 import ChatLog from 'src/components/ChatLog';
@@ -11,6 +12,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>Queer AI</h1>
+        <BackgroundVideo />
         <Container>
           <ChatLog />
           <ChatField />
