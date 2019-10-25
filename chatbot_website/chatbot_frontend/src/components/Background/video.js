@@ -40,6 +40,7 @@ export default class Background extends Component {
           autoPlay
           height={height}
           muted
+          playsinline
           src='/static/dildo-perceptron-720.mp4'
           width={width} />
       </div>
