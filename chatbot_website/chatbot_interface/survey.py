@@ -1,4 +1,5 @@
 from .airtable import Airtable
+import random
 
 airtable = Airtable()
 
@@ -14,7 +15,7 @@ class Survey():
         unasked_questions = [ q for q in questions_in_category if q not in asked_questions ]
         if len(unasked_questions) == 0:
             self.asked_questions_by_session[session_id] = []
-        return unasked_questions[0]
+        return unasked_questions[random.randint(0, len(unasked_questions) - 1)]
 
     def get_next_category(self, session_id):
         categories = airtable.get_categories()

@@ -55,7 +55,7 @@ def ws_receive(message):
     session_id = data['session']
     try:
         reporting.report(data)
-        if random.randint(0, 10) == 0:
+        if random.randint(0, 5) == 0:
             answer = survey.get_next_question_text(session_id)
         else:
             answer = ChatbotManager.callBot(question)
