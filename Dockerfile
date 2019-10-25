@@ -17,6 +17,7 @@ RUN  \
   asgi_redis \
   django-webpack-loader \
   requests \
+  whitenoise \
   channels==1.1.6 && \
   python3 -m nltk.downloader punkt
 
